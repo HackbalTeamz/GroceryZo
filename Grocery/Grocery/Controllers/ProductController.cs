@@ -9,24 +9,24 @@ namespace Grocery.Controllers
 {
     [Route("api/[controller]/[Action]")]
     [ApiController]
-    public class ProductCategoryController : BaseApiController
+    public class ProductController : BaseApiController
     {
-        private readonly IProductCategoryBLL _productCategoryBLL;
-        public ProductCategoryController(IProductCategoryBLL productCategoryBLL)
+        private readonly IProductBLL _productBLL;
+        public ProductController(IProductBLL productBLL)
         {
-            _productCategoryBLL = productCategoryBLL;
+            _productBLL = productBLL;
 
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<ProductCategoryDTO> pincodeDtoList = new();
+            List<ProductDTO> pincodeDtoList = new();
             try
             {
-                pincodeDtoList = _productCategoryBLL.GetAll();
+                pincodeDtoList= _productBLL.GetAll();
             }
-            catch (Exception exception)
+            catch(Exception exception)
             {
                 return StatusCode(StatusCodes.Status400BadRequest, new APIResponce { Status = "Error", Message = exception.Message, data = pincodeDtoList, StatusCode = StatusCodes.Status400BadRequest });
             }
@@ -36,24 +36,25 @@ namespace Grocery.Controllers
         [HttpGet]
         public IActionResult GetByID(int Id)
         {
-            ProductCategoryDTO productCategoryDTO = new();
+            ProductDTO pincodeDTO = new();
             try
             {
-                productCategoryDTO = _productCategoryBLL.GetById(Id);
+                pincodeDTO= _productBLL.GetById(Id);
             }
             catch(Exception exception)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, new APIResponce { Status = "Error", Message = exception.Message, data = productCategoryDTO, StatusCode = StatusCodes.Status400BadRequest });
+                return StatusCode(StatusCodes.Status400BadRequest, new APIResponce { Status = "Error", Message = exception.Message, data = pincodeDTO, StatusCode = StatusCodes.Status400BadRequest });
             }
-            return Ok(new APIResponce { Status = "Success", Message = "Data Fetched Successfully", data = productCategoryDTO, StatusCode = StatusCodes.Status200OK });
+            return Ok(new APIResponce { Status = "Success", Message = "Data Fetched Successfully", data = pincodeDTO, StatusCode = StatusCodes.Status200OK });
         }
+
         [HttpPost]
-        public IActionResult UpdateById(ProductCategoryDTO pincode)
+        public IActionResult UpdateById(ProductDTO pincode)
         {
-            ProductCategoryDTO pincodeDTO = new ProductCategoryDTO();
+            ProductDTO pincodeDTO = new ProductDTO();
             try
             {
-                pincodeDTO = _productCategoryBLL.Update(pincode);
+                pincodeDTO = _productBLL.Update(pincode);
             }
             catch (Exception exception)
             {
@@ -67,7 +68,7 @@ namespace Grocery.Controllers
             bool IsSuccess = false;
             try
             {
-                IsSuccess = _productCategoryBLL.Delete(Id);
+                IsSuccess = _productBLL.Delete(Id);
             }
             catch (Exception exception)
             {
@@ -75,14 +76,13 @@ namespace Grocery.Controllers
             }
             return Ok(new APIResponce { Status = "Success", Message = "Data Fetched Successfully", data = IsSuccess, StatusCode = StatusCodes.Status200OK });
         }
-
         [HttpPost]
-        public IActionResult SaveProductCategory(ProductCategoryDTO productCategoryDTO)
+        public IActionResult SaveProduct(ProductDTO pincodeDTO)
         {
-            ProductCategoryDTO pincode = new();
+            ProductDTO pincode = new();
             try
             {
-                pincode = _productCategoryBLL.Add(productCategoryDTO);
+                pincode = _productBLL.Add(pincodeDTO);
             }
             catch (Exception exception)
             {
@@ -90,7 +90,6 @@ namespace Grocery.Controllers
             }
             return Ok(new APIResponce { Status = "Success", Message = "Data Inserted Successfully", data = pincode, StatusCode = StatusCodes.Status200OK });
         }
-
 
     }
 }
