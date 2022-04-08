@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title - Hackbal Cyber POS</title>
+    
+     <link rel="stylesheet" href="~/AdminPanel/components/bootstrap/dist/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/font-awesome/css/font-awesome.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/Ionicons/css/ionicons.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+     <link rel="stylesheet" href="~/css/AdminPanel/css/AdminLTE.min.css" />
+     <link rel="stylesheet" href="~/css/AdminPanel/css/skins/skin-purple.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/morris.js/morris.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/jvectormap/jquery-jvectormap.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/plugins/bootstrap-slider/slider.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/select2/dist/css/select2.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/plugins/timepicker/bootstrap-timepicker.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/plugins/iCheck/all.css" />
+     <link rel="stylesheet" href="~/AdminPanel/plugins/pace/pace.min.css" />
+     <link rel="stylesheet" href="~/AdminPanel/components/fullcalendar/dist/fullcalendar.min.css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
+</head>
+<body class="hold-transition fixed skin-purple sidebar-mini">
+
+    <div class="wrapper">
+
+        <header class="main-header">
+    <!-- Logo -->
+    <a href="#" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>CPOS</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>EDUJOY</b> 360</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Content/AdminPanel/img/admin.png" class="user-image" alt="User Image">
+                        <span class="hidden-xs">Admin</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="~/Content/AdminPanel/img/admin.png" class="img-circle" alt="User Image">
+                            <p>
+                                 Admin
+                                @*<small>Member since Nov. 2012</small>*@
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                         
+                            <!-- /.row -->
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                @*<a href="#" class="btn btn-default btn-flat">Profile</a>*@
+                            </div>
+                            <div class="pull-right">
+                                <a href="~/Account/Logout" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                @*<li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>*@
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+        
+<aside class="main-sidebar sidebarscroll">
+    <section class="sidebar">
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/Content/AdminPanel/img/admin.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>Admin</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
+
+
+            <li class="">
+                <a href="@Url.Action("Index", "CountryTbls")">
+                    <i class="fa fa-globe"></i> <span>Country</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            @*<li class="@Html.IsSelected(controller: "CategoryTbls")">
+                <a href="@Url.Action("Index", "CategoryTbls")">
+                    <i class="fa fa-list"></i> <span>Category</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "SubCategoryTbls")">
+                <a href="@Url.Action("Index", "SubCategoryTbls")">
+                    <i class="fa fa-tasks"></i> <span>Sub Category</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "StoreTbls")">
+                <a href="@Url.Action("Index", "StoreTbls")">
+                    <i class="fa fa-shopping-bag"></i> <span>Store</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CourseTbls")">
+                <a href="@Url.Action("Index", "CourseTbls")">
+                    <i class="fa fa-book"></i> <span>Course</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "CourseFeatureTbls")">
+                <a href="@Url.Action("Index", "CourseFeatureTbls")">
+                    <i class="fa fa-cubes"></i> <span>Course Feature</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CourseModuleTbls")">
+                <a href="@Url.Action("Index", "CourseModuleTbls")">
+                    <i class="fa fa-list-alt"></i> <span>Course Module</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CourseModuleDetailsTbls")">
+                <a href="@Url.Action("Index", "CourseModuleDetailsTbls")">
+                    <i class="fa fa-list-ol"></i> <span>Course Module Details</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CourseExtraDetailsTbls")">
+                <a href="@Url.Action("Index", "CourseExtraDetailsTbls")">
+                    <i class="fa fa-list-ol"></i> <span>Course Extra Details</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CourseSyllabusTbls")">
+                <a href="@Url.Action("Index", "CourseSyllabusTbls")">
+                    <i class="fa fa-list-ol"></i> <span>Course Syllabus</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CoursePriceTbls")">
+                <a href="@Url.Action("Index", "CoursePriceTbls")">
+                    <i class="fa fa-dollar"></i> <span>Course Price</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "FAQTbls")">
+                <a href="@Url.Action("Index", "FAQTbls")">
+                    <i class="fa fa-question"></i> <span>FAQ</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "InstructerTbls")">
+                <a href="@Url.Action("Index", "InstructerTbls")">
+                    <i class="fa fa-user"></i> <span>instructer</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "StokeBrokerTbls")">
+                <a href="@Url.Action("Index", "StokeBrokerTbls")">
+                    <i class="fa fa-user"></i> <span> Stoke Broker </span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "StokeNewsTbls")">
+                <a href="@Url.Action("Index", "StokeNewsTbls")">
+                    <i class="fa fa-user"></i> <span> Stoke News </span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "DiscountTbls")">
+                <a href="@Url.Action("Index", "DiscountTbls")">
+                    <i class="fa fa-rupee"></i> <span>Discount</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CourseDiscountTbls")">
+                <a href="@Url.Action("Index", "CourseDiscountTbls")">
+                    <i class="fa fa-fire"></i> <span>Course Discount</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+
+
+
+            <li class="@Html.IsSelected(controller: "VideoTbls")">
+                <a href="@Url.Action("Index", "VideoTbls")">
+                    <i class="fa fa-viadeo"></i> <span>Video</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "DemoVideoTbls")">
+                <a href="@Url.Action("Index", "DemoVideoTbls")">
+                    <i class="fa fa-video-camera"></i> <span>Demo Video</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "LiveClassTbls")">
+                <a href="@Url.Action("Index", "LiveClassTbls")">
+                    <i class="fa fa-video-camera"></i> <span>Live Class</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "ExamTbls")">
+                <a href="@Url.Action("Index", "ExamTbls")">
+                    <i class="fa fa-edit"></i> <span>Exam</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "ExamQuestioinTbls")">
+                <a href="@Url.Action("Index", "ExamQuestioinTbls")">
+                    <i class="fa fa-question"></i> <span>Exam Question</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "StudentsTbls")">
+                <a href="@Url.Action("Index", "StudentsTbls")">
+                    <i class="fa fa-group"></i> <span>Students</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "CourseStudentTbls")">
+                <a href="@Url.Action("Index", "CourseStudentTbls")">
+                    <i class="fa fa-group"></i> <span>Course Student</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "StudentExamTbls")">
+                <a href="@Url.Action("Index", "StudentExamTbls")">
+                    <i class="fa fa-university"></i> <span>Student Exam  </span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "StudentExamResultTbls")">
+                <a href="@Url.Action("Index", "StudentExamResultTbls")">
+                    <i class="fa fa-university"></i> <span>Student Exam Result </span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "TestimonialTbls")">
+                <a href="@Url.Action("Index", "TestimonialTbls")">
+                    <i class="fa fa-table"></i> <span>Testimonial </span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "SMSGateWayTbls")">
+                <a href="@Url.Action("Index", "SMSGateWayTbls")">
+                    <i class="fa fa-envelope-open"></i> <span>SMSGateWay</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+
+            <li class="@Html.IsSelected(controller: "PaymentTbls")">
+                <a href="@Url.Action("Index", "PaymentTbls")">
+                    <i class="fa fa-dollar"></i> <span>Payment</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "EmailSubsriberTbls")">
+                <a href="@Url.Action("Index", "EmailSubsriberTbls")">
+                    <i class="fa fa-envelope-open"></i> <span>Email Subsriber</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+
+
+
+            <li class="@Html.IsSelected(controller: "ReviewTbls")">
+                <a href="@Url.Action("Index", "ReviewTbls")">
+                    <i class="fa fa-comment"></i> <span>Review</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "SponcerCompanyTbls")">
+                <a href="@Url.Action("Index", "SponcerCompanyTbls")">
+                    <i class="fa fa-handshake-o"></i> <span>Sponcer Company </span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+            </li>*@
+
+
+
+        </ul>
+    </section>
+</aside>
+@section Scripts
+{
+
+}
+
+        @RenderBody()
+
+       <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+    </div>
+    <strong>Copyright &copy; 2020 <a href="https://www.hackbal.com">Hackbal Teamz</a>.</strong> All rights
+    reserved.
+</footer>
+
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+    @*Error Model*@
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="alert alert-danger text-center" role="alert">
+                <div id="errormsg"></div>
+            </div>
+        </div>
+    </div>
+    @*Error Model*@
+    <link rel="stylesheet" href="~/AdminPanel/components/jquery/dist/jquery.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/fastclick/lib/fastclick.js" />
+    <link rel="stylesheet" href="~/AdminPanel/js/adminlte.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/plugins/bootstrap-slider/bootstrap-slider.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/datatables.net/js/jquery.dataTables.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/datatables.net-bs/js/dataTables.bootstrap.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/bootstrap-daterangepicker/daterangepicker.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/moment/moment.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/jquery-ui/jquery-ui.min.js" />
+    <link rel="stylesheet" href="~/AdminPanel/components/bootstrap/dist/js/bootstrap.min.js" />
+
+    <script>
+        @if(ViewBag.Error != null) {
+        <text>
+        $('#myModal').modal('show');
+        $('#errormsg').text("@ViewBag.Error");
+        </text>
+        }
+        setTimeout(function () { $('#myModal').modal('hide'); }, 2000);
+    </script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
