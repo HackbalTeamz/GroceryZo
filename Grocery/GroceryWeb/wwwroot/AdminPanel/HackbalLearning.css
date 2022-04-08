@@ -1,0 +1,52 @@
+﻿.pagination > .active > a {
+    background-color: #605ca8;
+}
+
+.atagwhite {
+    color: #ffffff;
+}
+
+.atagwhite:hover {
+    color: black;
+}
+
+.dtalter dt {
+    text-align: left;
+}
+
+.icondesign {
+    color: #000000;
+    padding-right: 5px;
+}
+.icondesign:hover {
+        color: #605ca8;
+}
+.sidebarscroll {
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+   
+}
+.createbtn {
+    border: none;
+    border-radius: 25px 25px 25px 25px;
+    padding: 10px;
+    font-weight: bold;
+}
+.titlestyle{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.field {
+    border: none;
+    border-radius: 25px 25px 25px 25px;
+    padding-left: 10px;
+   
+}
+.exportbtn {
+    border: none;
+    border-radius: 25px 25px 25px 25px;
+    padding: 10px;
+    font-weight: bold;
+}

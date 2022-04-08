@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryBLL", "GroceryBLL\Gr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryBOL", "GroceryBOL\GroceryBOL.csproj", "{F60D1DD8-E194-4DA5-86B3-9421063DD7DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryUtilities", "GroceryUtilities\GroceryUtilities.csproj", "{883DD6FB-9692-4ED5-9C21-6018CE8926AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryUtilities", "GroceryUtilities\GroceryUtilities.csproj", "{883DD6FB-9692-4ED5-9C21-6018CE8926AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryWeb", "GroceryWeb\GroceryWeb.csproj", "{2892ED7B-0D52-49BE-8060-6551F642122F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{883DD6FB-9692-4ED5-9C21-6018CE8926AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{883DD6FB-9692-4ED5-9C21-6018CE8926AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{883DD6FB-9692-4ED5-9C21-6018CE8926AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2892ED7B-0D52-49BE-8060-6551F642122F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2892ED7B-0D52-49BE-8060-6551F642122F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2892ED7B-0D52-49BE-8060-6551F642122F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2892ED7B-0D52-49BE-8060-6551F642122F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
