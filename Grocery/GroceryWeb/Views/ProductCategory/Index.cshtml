@@ -1,0 +1,128 @@
+﻿@model IEnumerable<GroceryBOL.ProductCategoryDTO>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Admin/_AdminBase.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-6"><span class="titlestyle">Manage InvoiceGenerator</span></div>
+            <div class="col-md-6 text-right">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <div class="card-body">
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped dataTable" id="dataTable" role="grid" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr role="row">
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Id)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CategoryName)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Flag)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Image)
+                                            </th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model)
+                                        {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Id)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CategoryName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Flag)
+                                            </td>
+                                            <td>
+                                                <img src="~/Images/@item.Image" height="100px" width="100px"/>
+                                            </td>
+                                           
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">
+                                                    <i class="fa fa-pencil   " title="Edit" style="padding-left:10px; color:green;" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Id)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CategoryName)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Flag)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Image)
+                                            </th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+@section Scripts
+{
+    @*@Scripts.Render("~/bundles/dashboard")*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 20,
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
+}

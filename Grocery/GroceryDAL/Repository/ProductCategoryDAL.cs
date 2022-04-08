@@ -130,6 +130,7 @@ namespace GroceryDAL
                 destination.Id = source.Id;
                 destination.Flag = source.Flag;
                 destination.CategoryName = source.CategoryName;
+                destination.Image = source.Image;
             }
             return destination;
 
@@ -139,6 +140,7 @@ namespace GroceryDAL
             destination.Id = source.Id;
             destination.Flag = source.Flag;
             destination.CategoryName = source.CategoryName;
+            destination.Image = source.Image;
             return destination;
         }
     }
