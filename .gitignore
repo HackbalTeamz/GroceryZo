@@ -16,3 +16,5 @@
 /Grocery/GroceryUtilities/bin
 /Grocery/Grocery/Properties/PublishProfiles
 /Grocery/Grocery/.config/dotnet-tools.json
+/Grocery/GroceryWeb/bin/Debug/net5.0
+/Grocery/GroceryWeb/obj/Debug/net5.0
