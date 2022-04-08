@@ -1,4 +1,4 @@
-﻿
+﻿@model GroceryBOL.LoginViewModel
 @{
     ViewBag.Title = "Login";
     Layout = null;
@@ -192,11 +192,11 @@ body {
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					@*<input asp-for="Email" class="login__input" placeholder="User name / Email">*@
+					<input asp-for="Email" class="login__input" placeholder="User name / Email">
 				</div>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>
-					@*<input asp-for="Password" class="login__input" placeholder="Password">*@
+					<input asp-for="Password" class="login__input" placeholder="Password">
 				</div>
 				 
 				<button type="submit" class="button login__submit">

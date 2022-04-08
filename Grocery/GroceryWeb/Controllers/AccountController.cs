@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GroceryBOL;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryWeb.Controllers
 {
@@ -9,9 +10,13 @@ namespace GroceryWeb.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(string loginViewModel)
+        public IActionResult Login(LoginViewModel loginViewModel)
         {
-            return RedirectToAction("Index", "Home");
+            if(loginViewModel.Email == "admin@hackbal.com" && loginViewModel.Password == "T")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
     }
 }

@@ -1,6 +1,10 @@
+using GroceryBLL;
+using GroceryDAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +27,17 @@ namespace GroceryWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region BLL Injections
+            services.AddScoped<IProductCategoryBLL, ProductCategoryBLL>();
+
+            #endregion
+            #region DAL Injections
+            services.AddScoped<IProductCategoryDAL, ProductCategoryDAL>();
+            #endregion
+
             services.AddControllersWithViews();
+            services.AddDbContext<GroceryZoContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +64,7 @@ namespace GroceryWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

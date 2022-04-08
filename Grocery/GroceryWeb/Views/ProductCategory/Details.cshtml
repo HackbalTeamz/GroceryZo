@@ -1,0 +1,42 @@
+﻿@model Petro.Models.AdminTbl
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdminTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnteredOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnteredOn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedOn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cred)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cred.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AdminId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
