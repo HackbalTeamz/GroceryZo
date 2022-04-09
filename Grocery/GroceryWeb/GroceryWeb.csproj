@@ -6,10 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\ProductCategory\Create.cshtml" />
     <Content Remove="Views\ProductCategory\Delete.cshtml" />
     <Content Remove="Views\ProductCategory\Details.cshtml" />
-    <Content Remove="Views\ProductCategory\Edit.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

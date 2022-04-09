@@ -79,6 +79,7 @@ namespace GroceryDAL
                 ProductCategory Model = new ProductCategory();
                 CopyFrom(ModelDTO, Model);
                 _context.ProductCategories.Update(Model);
+                Save();
                 CopyTo(ModelDTO, Model);
                 return ModelDTO;
 

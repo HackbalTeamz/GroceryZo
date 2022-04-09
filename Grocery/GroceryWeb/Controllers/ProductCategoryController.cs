@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroceryBLL;
+using GroceryBOL;
+using System;
 
 namespace GroceryWeb.Controllers
 {
@@ -43,81 +45,68 @@ namespace GroceryWeb.Controllers
         //}
 
         //// GET: AdminTbls/Create
-        //public IActionResult Create()
-        //{
-        //    ViewData["CredId"] = new SelectList(_context.CredentialTbls, "CredId", "Email");
-        //    return View();
-        //}
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         //// POST: AdminTbls/Create
         //// To protect from overposting attacks, enable the specific properties you want to bind to.
         //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("AdminId,CredId,Name,EnteredOn,UpdatedOn")] AdminTbl adminTbl)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(adminTbl);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["CredId"] = new SelectList(_context.CredentialTbls, "CredId", "Email", adminTbl.CredId);
-        //    return View(adminTbl);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ProductCategoryDTO productCategoryDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                _productCategoryBLL.Add(productCategoryDTO);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(productCategoryDTO);
+        }
 
         //// GET: AdminTbls/Edit/5
-        //public async Task<IActionResult> Edit(long? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public IActionResult Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var adminTbl = await _context.AdminTbls.FindAsync(id);
-        //    if (adminTbl == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["CredId"] = new SelectList(_context.CredentialTbls, "CredId", "Email", adminTbl.CredId);
-        //    return View(adminTbl);
-        //}
+            var adminTbl = _productCategoryBLL.GetById(id);
+            if (adminTbl == null)
+            {
+                return NotFound();
+            }
+            return View(adminTbl);
+        }
 
         //// POST: AdminTbls/Edit/5
         //// To protect from overposting attacks, enable the specific properties you want to bind to.
         //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(long id, [Bind("AdminId,CredId,Name,EnteredOn,UpdatedOn")] AdminTbl adminTbl)
-        //{
-        //    if (id != adminTbl.AdminId)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(long id, ProductCategoryDTO productCategoryDTO)
+        {
+            if (id != productCategoryDTO.Id)
+            {
+                return NotFound();
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(adminTbl);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!AdminTblExists(adminTbl.AdminId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["CredId"] = new SelectList(_context.CredentialTbls, "CredId", "Email", adminTbl.CredId);
-        //    return View(adminTbl);
-        //}
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _productCategoryBLL.Update(productCategoryDTO);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(productCategoryDTO);
+        }
 
         //// GET: AdminTbls/Delete/5
         //public async Task<IActionResult> Delete(long? id)
