@@ -35,6 +35,12 @@ namespace GroceryWeb
             services.AddScoped<IProductCategoryDAL, ProductCategoryDAL>();
             #endregion
 
+            #region BLL Injections
+            services.AddScoped<IPincodeBLL, PincodeBLL>();
+            #endregion
+            #region DAL Injections
+            services.AddScoped<IPincodeDAL, PincodeDAL>();
+            #endregion
             services.AddControllersWithViews();
             services.AddDbContext<GroceryZoContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
